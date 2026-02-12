@@ -1,0 +1,11 @@
+streamlit
+pandas
+numpy
+statsmodels
+prophet
+tensorflow
+scikit-learn
+vaderSentiment
+transformers
+supabase
+torch
