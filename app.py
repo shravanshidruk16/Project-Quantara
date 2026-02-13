@@ -127,7 +127,6 @@ if st.sidebar.button("Logout"):
 
 st.sidebar.markdown("---")
 
-st.sidebar.markdown("### 👨‍💻 Project Contributions")
 st.sidebar.markdown("""
 ### 👨‍💻 Project Contributions
 
@@ -175,7 +174,7 @@ margin-bottom:30px;
     font-size:38px;
     font-weight:800;
     letter-spacing:1px;
-    color:#111111;
+    color:white;
     text-transform:uppercase;
     text-shadow:
         0px 0px 2px rgba(0,0,0,0.6),
@@ -249,7 +248,7 @@ else:
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # ================= FORECAST SECTION =================
-st.subheader("📈 AI Forecast Models")
+st.subheader("📈 Forecasting Models")
 
 st.markdown("### Historical Price")
 st.line_chart(data['Close'])
