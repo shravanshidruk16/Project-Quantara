@@ -4,8 +4,8 @@ import numpy as np
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from prophet import Prophet
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense, Dropout
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import LSTM, Dense, Dropout
 from sklearn.preprocessing import MinMaxScaler
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
@@ -135,14 +135,7 @@ _TECOMP, GSMCOE, SPPU_
 - UI Design  
 - Model Integration  
 - Analysis Engine  
-
----
-
-**2️⃣ Rushik Kokate**  
-_TECOMP, GSMCOE, SPPU_  
-- Data Scraping Pipeline  
-- Data Cleaning  
-- CSV Preparation  
+- Data Collection and Pipeline
 """)
 
 
@@ -279,32 +272,32 @@ def run_prophet(df):
 st.markdown("### Prophet Forecast")
 st.line_chart(run_prophet(data))
 
-@st.cache_resource
-def run_lstm(series):
-    scaler = MinMaxScaler()
-    scaled = scaler.fit_transform(series.values.reshape(-1,1))
-    X, y = [], []
-    for i in range(60, len(scaled)):
-        X.append(scaled[i-60:i])
-        y.append(scaled[i])
-    X, y = np.array(X), np.array(y)
-    model = Sequential([LSTM(64, return_sequences=True), Dropout(0.2), LSTM(64), Dense(1)])
-    model.compile(optimizer='adam', loss='mse')
-    model.fit(X, y, epochs=15, batch_size=32, verbose=0)
+# @st.cache_resource
+# def run_lstm(series):
+#     scaler = MinMaxScaler()
+#     scaled = scaler.fit_transform(series.values.reshape(-1,1))
+#     X, y = [], []
+#     for i in range(60, len(scaled)):
+#         X.append(scaled[i-60:i])
+#         y.append(scaled[i])
+#     X, y = np.array(X), np.array(y)
+#     model = Sequential([LSTM(64, return_sequences=True), Dropout(0.2), LSTM(64), Dense(1)])
+#     model.compile(optimizer='adam', loss='mse')
+#     model.fit(X, y, epochs=15, batch_size=32, verbose=0)
 
-    pred_input = scaled[-60:].reshape(1,60,1)
-    preds = []
-    for _ in range(30):
-        p = model.predict(pred_input, verbose=0)[0][0]
-        preds.append(p)
-        pred_input = np.append(pred_input[:,1:,:], [[[p]]], axis=1)
+#     pred_input = scaled[-60:].reshape(1,60,1)
+#     preds = []
+#     for _ in range(30):
+#         p = model.predict(pred_input, verbose=0)[0][0]
+#         preds.append(p)
+#         pred_input = np.append(pred_input[:,1:,:], [[[p]]], axis=1)
 
-    preds = scaler.inverse_transform(np.array(preds).reshape(-1,1))
-    future_dates = pd.date_range(series.index[-1], periods=30)
-    return pd.DataFrame(preds, index=future_dates)
+#     preds = scaler.inverse_transform(np.array(preds).reshape(-1,1))
+#     future_dates = pd.date_range(series.index[-1], periods=30)
+#     return pd.DataFrame(preds, index=future_dates)
 
-st.markdown("### LSTM Deep Learning Forecast")
-st.line_chart(run_lstm(data['Close']))
+# st.markdown("### LSTM Deep Learning Forecast")
+# st.line_chart(run_lstm(data['Close']))
 
 # ================= FOOTER =================
 st.markdown("""
