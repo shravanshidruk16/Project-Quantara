@@ -84,7 +84,7 @@ def signup(email, password):
 # ================= LOGIN PAGE =================
 if st.session_state.user is None:
     st.markdown("<h1 style='text-align:center;'>🚀 Quantara</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align:center;color:gray;'>Quantitative Intelligence Reimagined - A initiative by Shravan Shidruk and Rushik Kokate</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center;color:gray;'>Quantitative Intelligence Reimagined - A initiative by Shravan Shidruk</p>", unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
@@ -128,11 +128,12 @@ if st.sidebar.button("Logout"):
 st.sidebar.markdown("---")
 
 st.sidebar.markdown("""
-### 👨‍💻 Project Contributions
+### 👨‍💻 Project Contributor Details
 
 **1️⃣ Shravan Shidruk**  
 _TECOMP, GSMCOE, SPPU_  
 - UI Design  
+- ML models training
 - Model Integration  
 - Analysis Engine  
 - Data Collection and Pipeline
