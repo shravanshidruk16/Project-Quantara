@@ -304,6 +304,6 @@ st.line_chart(run_prophet(data))
 st.markdown("""
 <div class="footer">
 © 2026 Quantara (Quant + Tara) - Quantitative Intelligence Reimagined  
-Built by Team Shravan & Rushik | All Rights Reserved
+Built by Shravan Shidruk | Coders Of Pune | All Rights Reserved
 </div>
 """, unsafe_allow_html=True)
