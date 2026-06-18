@@ -13,7 +13,7 @@ from supabase import create_client
 
 st.set_page_config(layout="wide", page_title="Quantara - Quantitative Intelligence Reimagined", page_icon="🚀")
 
-# ================== PREMIUM CSS ==================
+# ================== PREMIUM CSS =================
 st.markdown("""
 <style>
 body {
